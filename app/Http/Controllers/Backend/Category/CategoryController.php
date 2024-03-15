@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Backend\Category;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\Category;
 
 class CategoryController extends Controller
 {
@@ -17,9 +18,16 @@ class CategoryController extends Controller
             'name' => 'required',
             'image' => 'required|image'
         ]);
-        
-        
-        return redirect()->back()->with('success', 'Category added successfully');
+
+        $imageName = $request->name.'.'. $request->image->extension();
+        $request->image->move('images/', $imageName);
+
+        Category::create([
+            'name' => $request->name,
+            'image' => $imageName
+        ]);
+        session()->flash('success', 'category has been created');
+        return redirect()->back();
     
     }
     

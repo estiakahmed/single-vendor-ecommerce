@@ -12,6 +12,10 @@
                   </ul>
               </div>
             @endif
+
+            @if(session()->has('success'))
+              <div class="alert alert-success">{{session()->get('success')}}</div>
+            @endif
     <div class="row">
         <div class="col-md-12">
             <h2 class="mt-4 mb-4">Add Category</h2>
