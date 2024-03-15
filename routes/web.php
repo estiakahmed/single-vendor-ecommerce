@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\Frontend\frontendController;
+use App\Http\Controllers\Backend\Category\CategoryController;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,3 +21,6 @@ Route::get('/',[frontendController::class,'index']);
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::get('/category/create',[CategoryController::class, 'createCategoryForm']);
+Route::post('/category/store',[CategoryController::class, 'categoryStore']);
