@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\Frontend\frontendController;
 use App\Http\Controllers\Backend\Category\CategoryController;
+use App\Http\Controllers\Backend\Product\ProductController;
 
 /*
 |--------------------------------------------------------------------------
@@ -28,3 +29,9 @@ Route::get('/category/manage',[CategoryController::class,'categoryManage']);
 Route::get('/category/edit/{id}',[CategoryController::class,'categoryEdit']);
 Route::get('/category/delete/{id}',[CategoryController::class,'categoryDelete']);
 Route::post('/category/update/{id}',[CategoryController::class,'categoryUpdate']);
+Route::get('/product/add',[ProductController::class,'addProduct']);
+Route::get('/product/manage',[ProductController::class,'manageProduct']);
+Route::post('/product/store',[ProductController::class,'storeProduct']);
+Route::get('/product/delete/{id}',[ProductController::class,'deleteProduct']);
+Route::get('/product/edit/{id}',[ProductController::class,'editProduct']);
+
