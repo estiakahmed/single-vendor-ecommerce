@@ -49,24 +49,26 @@ class CategoryController extends Controller
         $category = Category::find($id);
         return view('backend.pages.category.edit',compact('category'));
     }
-    public function categoryUpdate(Request $request,$id){
-
-        $category = Category::find($id);
-        if($request->hasFile('image')){
-            File::delete(public_path('images/'.$category->image));
-            $imageName = $request->name .'.'. $request->image->extension();
-            $request->image->move('images/', $imageName);
-            $category->image = $imageName;
-        }else{
-            $imageName = $request->name .'.'. $request->image->extension();
-            $request->image->move('images/', $imageName);
-            $category->image = $imageName;
-        }
-        $category->name = $request->name;
-        $category->save();
-
-        return redirect()->back()->with('success', 'Category has been Updated');
-
+    public function categoryUpdate(Request $request, $id)
+{
+    $category = Category::find($id);
+    
+    if ($request->hasFile('image')) {
+        // Delete previous image
+        File::delete(public_path('images/' . $category->image));
+        
+        // Process new image
+        $imageName = $request->name . '.' . $request->image->extension();
+        $request->image->move('images/', $imageName);
+        $category->image = $imageName;
     }
+    
+    // Update category name
+    $category->name = $request->name;
+    $category->save();
+
+    return redirect()->back()->with('success', 'Category has been Updated');
+}
+
     
 }

@@ -5,6 +5,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\Frontend\frontendController;
 use App\Http\Controllers\Backend\Category\CategoryController;
 use App\Http\Controllers\Backend\Product\ProductController;
+use App\Http\Controllers\Frontend\CartController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,6 +20,7 @@ use App\Http\Controllers\Backend\Product\ProductController;
 
 
 Route::get('/',[frontendController::class,'index']);
+Route::post('/add/to/cart',[CartController::class,'addToCart']);
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
@@ -34,4 +36,5 @@ Route::get('/product/manage',[ProductController::class,'manageProduct']);
 Route::post('/product/store',[ProductController::class,'storeProduct']);
 Route::get('/product/delete/{id}',[ProductController::class,'deleteProduct']);
 Route::get('/product/edit/{id}',[ProductController::class,'editProduct']);
+Route::post('/product/update/{id}',[ProductController::class,'updateProduct']);
 

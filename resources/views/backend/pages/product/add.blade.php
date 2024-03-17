@@ -29,6 +29,17 @@
                 <input type="text" name="name" class="form-control" id="productName" placeholder="Enter product name">
               </div>
               <div class="form-group">
+                <label for="productCategory">Product Category:</label>
+                    
+                <select class="form-control" name="category_id" id="productCategory">
+                @foreach ($categories as $category)
+                 
+                    <option value="{{$category->id}}">{{$category->name}}</option>
+                  @endforeach
+                </select>
+               
+              </div>
+              <div class="form-group">
                 <label for="productPrice">Price:</label>
                 <input type="number" name="price" class="form-control" id="productPrice" placeholder="Enter product price">
               </div>
@@ -45,16 +56,15 @@
                 <textarea class="ckeditor form-control" name="long_description" id="productLongDescription" placeholder="Enter long description"></textarea>
               </div>
               <div class="form-group">
-                <label for="productCategory">Product Category:</label>
-                    
-                <select class="form-control" name="category_id" id="productCategory">
-                @foreach ($categories as $category)
-                 
-                    <option value="{{$category->id}}">{{$category->name}}</option>
-                  @endforeach
+                <label for="">Product Type</label>
+                <select name="type" id="">
+                  <option value="" disabled>Select an option</option>
+                  <option value="Hot">Hot</option>
+                  <option value="Top">Top</option>
+                  <option value="New">New</option>
                 </select>
-               
               </div>
+           
               <button type="submit" class="btn btn-primary">Add Product</button>
             </form>
           </div>

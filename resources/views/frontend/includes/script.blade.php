@@ -10,4 +10,4 @@
 <script src="{{asset('/frontend')}}/assets/js/jquery.countdown.min.js"></script>
 <!-- Main JS File -->
 <script src="{{asset('/frontend')}}/assets/js/main.js"></script>
-<script src="{{asset('/frontend')}}/assets/js/demos/demo-3.js"></script>
+<script src="{{asset('/frontend')}}/assets/js/demos/demo-4.js"></script>
